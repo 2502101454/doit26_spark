@@ -1,0 +1,3 @@
+slow    single
+must    jump    slow
+not     stay    must    jump

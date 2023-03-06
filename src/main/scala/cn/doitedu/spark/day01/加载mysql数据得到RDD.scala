@@ -25,7 +25,6 @@ object 加载mysql数据得到RDD {
     conf.setAppName("MysqlRDD_Demo")
 
     val sc = new SparkContext(conf)
-
     // 创建一个函数，返回数据库连接
     val getConn = () => {
       DriverManager.getConnection("jdbc:mysql://localhost:3306/wz_test", "root", "12345678")

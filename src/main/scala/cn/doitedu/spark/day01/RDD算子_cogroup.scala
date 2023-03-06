@@ -23,7 +23,7 @@ object RDD算子_cogroup {
     val rdd: RDD[(String, Int)] = sc.parallelize(Seq(("a", 1), ("a", 2), ("b", 3), ("d", 0)), 2)
     val rdd2: RDD[(String, Char)] = sc.parallelize(Seq(("a", 'x'), ("a", 'w'), ("c", 'p'), ("d", 'k')), 3)
     // join后的下游rdd是4个分区，这个4个分区描述了从前面两个rdd的分区转变来的逻辑
-    val value: RDD[(String, (Iterable[Int], Iterable[Char]))] = rdd.cogroup(rdd2, 4)
+    val value: RDD[(String, (Iterable[Int], Iterable[Char]))] = rdd.sortByKey().cogroup(rdd2, 4)
     value.foreach(println)
     sc.stop()
   }
